@@ -1,9 +1,11 @@
 const DEF_COLOR = '#000000';
+const ERA_COLOR = '#FFFFFF'
 const DEF_MODE = 'color';
 const DEF_SIZE = 16;
 const DEBOUNCE_DELAY = 20; // Delay in milliseconds for debounce
 
 let currentColor = DEF_COLOR;
+let previousColor = DEF_COLOR; 
 let currentSize = DEF_SIZE;
 let currentMode = DEF_MODE;
 
@@ -17,17 +19,33 @@ const colorModeButton = document.getElementById('colorMode');
 const rainbowModeButton = document.getElementById('rainbowMode');
 const eraserModeButton = document.getElementById('eraserMode');
 const clearModeButton = document.getElementById('clearMode');
-
+const modeText = document.getElementById('modeText');
 
 colorWheel.addEventListener('input', (event) => {
   currentColor = event.target.value; // Update currentColor with selected color
 });
 
-colorWheel.oninput = (e) => setCurrentColor(e.target.value)
+colorModeButton.addEventListener('click', () => {
+  currentMode = DEF_MODE
+  currentColor = previousColor
+  modeText.textContent = 'Color Mode Activated!';
+})
 
-function setColor (color){
-  currentColor = color
-}
+rainbowModeButton.addEventListener('click', () => {
+  currentMode = 'rainbow'
+  modeText.textContent = 'Rainbow Mode Activated!';
+})
+
+eraserModeButton.addEventListener('click', () => {  
+  currentMode = 'eraser'
+  modeText.textContent = 'Eraser Mode Activated!';
+})
+
+clearModeButton.addEventListener('click', () => {
+  grid.innerHTML = '';
+  makeGrid(currentSize)
+})
+
 
 function makeGrid(size) {
   // Clearing the grid
@@ -55,15 +73,22 @@ function makeGrid(size) {
 
 function changeColor(event) {
   if (event.type === 'mouseover' && !mouseDown) return;
-  if (currentMode === 'color') {
+  else if (currentMode=='color') {
     event.target.style.backgroundColor = currentColor;
+    previousColor = currentColor
+  }
+  else if (currentMode == 'rainbow') {
+    const r = Math.floor(Math.random() * 256); // Random number between 0 and 255 for red
+    const g = Math.floor(Math.random() * 256); // Random number between 0 and 255 for green
+    const b = Math.floor(Math.random() * 256); // Random number between 0 and 255 for blue
+    currentColor = `rgb(${r}, ${g}, ${b})`;
+    event.target.style.backgroundColor = currentColor;
+  }
+  else if (currentMode == 'eraser') {
+    event.target.style.backgroundColor = ERA_COLOR;
   }
 }
 
-function clearGrid() {
-  grid.innerHTML = '';
-
-}
 
 makeGrid(32);
 
