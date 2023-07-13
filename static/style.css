@@ -97,6 +97,10 @@ body {
       justify-content: center;
       text-align: center;
     }
+    body {
+        background-color: bisque;
+        font-family: Arial, Helvetica, sans-serif;
+      }
     
     .grid {
       width: 300px;
