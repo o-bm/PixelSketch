@@ -1,0 +1,10 @@
+.grid {
+    display: grid;
+    width: 800px;
+    height: 800px;
+    box-shadow: rgba(0, 0, 0, 0.25) 2px 3px 15px;
+  }
+
+  .square{
+    user-select: none;
+  }
