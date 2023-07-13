@@ -1,3 +1,19 @@
+body {
+    background-color: bisque;
+    font-family: cursive;
+  }
+  p {
+    color:rgb(235, 82, 82);
+    font-weight: bold;
+  }
+  a {
+    color: #283bcb;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
 .container {
     display: flex;
     justify-content: space-between;
@@ -5,6 +21,7 @@
     max-width: 1200px; /* Adjust the max-width as needed */
     margin: 0 auto; /* Center the container horizontally */
     margin-top:50px;
+    background-color: antiquewhite;
   }
   
   .controls {
@@ -20,37 +37,33 @@
   
   .square {
     user-select: none;
+    background-color: rgb(255, 255, 255);
   }
   
-  /* Media query for mobile devices */
-  @media (max-width: 767px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-    .grid {
-        width: 300px;
-        height: 300px;
-      }
+
+  .btcontrols {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-
+  
   button,
-input {
-  width: 80%;
-  border: none;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  outline: none;
-}
-
-button {
-    padding: 10px 20px;
-    border: 1px solid var(--primary-dark);
-    border-radius: 5px;
+  input[type="color"] {
+    width: 250px;
+    height: 60px;
+    padding: 12px;
+    margin: 8px;
+    border: none;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-family: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+    
+    border-radius: 30px/50px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
   }
   
   button.active {
@@ -58,17 +71,63 @@ button {
     color: var(--primary-light);
   }
   
-  button,
-  input[type='color'] {
-    transition: transform 0.1s ease-in-out;
-  }
-  
   button:hover,
-  input[type='color']:hover {
+  input[type="color"]:hover {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
     transform: scale(1.05);
   }
   
-  input[type='color']:active {
-    transition: transform 0.05s ease-in-out;
-    transform: scale(1);
+  input[type="color"] {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
   }
+  
+  .size-value {
+    font-size: 20px;
+  }
+  
+  
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .grid {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btcontrols {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    button,
+    input[type="color"] {
+      width: 180px;
+      height: 40px;
+      padding: 8px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 20px;
+    }
+    
+    input[type="color"] {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .size-value {
+      font-size: 16px;
+    }
+  }
+  

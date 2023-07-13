@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelSketch</title>
     <link href="static/style.css" rel="stylesheet">
+    <link rel="icon" href="static/paintbrush.png">
     <script src="static/script.js" defer></script>
 </head>
 <body>
     <div class="wrapper">
         <div class = "container">
             <div class="controls">
-                <h1>PixelSketch</h1>
-                <p id="modeText">Color Mode Activated!</p>
+                
+               
+                <div class="btcontrols">
+                    <h1>PixelSketch</h1>
+                    <p id="modeText">Color Mode Activated!</p>
+                    <input id="colorWheel" type="color" value="#333333">
 
-                <input id="colorWheel" type="color" value="#333333">
+                    <button id="colorMode">Color Mode</button>
+                    <button id="rainbowMode">Rainbow Mode</button>
+                    <button id="eraserMode">Eraser</button>
+                    <button id="clearMode">Clear</button>
+    
+                    <div id="sizeValue" class="size-value">16 x 16</div>
+                    <input id="sizeSlider" type="range" value="16" min="1" max="64" />
+                    <p><a href="https://github.com/o-bm/PixelSketch">GitHub</a></p>
+                </div>
 
-                <button id="colorMode">Color Mode</button>
-                <button id="rainbowMode">Rainbow Mode</button>
-                <button id="eraserMode">Eraser</button>
-                <button id="clearMode">Clear</button>
-
-                <div id="sizeValue" class="size-value">16 x 16</div>
-                <input id="sizeSlider" type="range" value="16" min="1" max="64" />
 
             </div>
             <div class="grid" id="grid"></div>

@@ -20,9 +20,14 @@ const rainbowModeButton = document.getElementById('rainbowMode');
 const eraserModeButton = document.getElementById('eraserMode');
 const clearModeButton = document.getElementById('clearMode');
 const modeText = document.getElementById('modeText');
+const sizeSlider = document.getElementById('sizeSlider');
+const sizeValue = document.getElementById('sizeValue');
 
 colorWheel.addEventListener('input', (event) => {
   currentColor = event.target.value; // Update currentColor with selected color
+  if (currentMode == DEF_MODE) {
+    previousColor = currentColor
+  }
 });
 
 colorModeButton.addEventListener('click', () => {
@@ -45,6 +50,12 @@ clearModeButton.addEventListener('click', () => {
   grid.innerHTML = '';
   makeGrid(currentSize)
 })
+
+sizeSlider.addEventListener('input', () => {
+  const newSize = sizeSlider.value;
+  sizeValue.textContent = `${newSize} x ${newSize}`;
+  makeGrid(newSize);
+});
 
 
 function makeGrid(size) {
@@ -75,7 +86,7 @@ function changeColor(event) {
   if (event.type === 'mouseover' && !mouseDown) return;
   else if (currentMode=='color') {
     event.target.style.backgroundColor = currentColor;
-    previousColor = currentColor
+    
   }
   else if (currentMode == 'rainbow') {
     const r = Math.floor(Math.random() * 256); // Random number between 0 and 255 for red
@@ -90,7 +101,7 @@ function changeColor(event) {
 }
 
 
-makeGrid(32);
+makeGrid(DEF_SIZE);
 
 // Debounce function
 function debounce(func, delay) {
