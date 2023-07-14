@@ -54,7 +54,8 @@ clearModeButton.addEventListener('click', () => {
 sizeSlider.addEventListener('input', () => {
   const newSize = sizeSlider.value;
   sizeValue.textContent = `${newSize} x ${newSize}`;
-  makeGrid(newSize);
+  currentSize = newSize
+  makeGrid(currentSize);
 });
 
 
