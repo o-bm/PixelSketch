@@ -2,7 +2,8 @@
 
 PixelSketch is a web app that enables users to unleash their creativity by creating pixel art. With an intuitive interface and customizable features, users can draw on a grid, select different drawing modes, adjust grid size, and experiment with various colors.
 
-You can view it (here)[https://o-bm.github.io/PixelSketch/]
+[View Demo](https://o-bm.github.io/PixelSketch/)
+
 ## Features
 
 Draw and create pixel art on a grid
